@@ -10,5 +10,9 @@ describe( "The Counter: ", function() {
   it( "Should return the total", function() {
     assert.equal( 1000, counter.total )
   })
-  
+
+  it( "Should split the numbers to an array", function() {
+    assert.deepEqual( [ 1, 0, 0, 0 ], counter.convert() )
+  })
+
 })
