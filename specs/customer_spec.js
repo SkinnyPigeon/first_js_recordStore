@@ -1,8 +1,12 @@
 var Customer = require( '../customer' );
+var Record = require('../record');
+
 var assert = require( 'chai' ).assert;
 
 describe( "The Customer: ", function() {
   beforeEach( function() {
+    bleach = new Record( "Nirvana", "Bleach", 8 )
+    bleachSpecial = new Record( "Nirvana", "Bleach Special Edition", 51 )
     jeff = new Customer( "Jeff", 50 )
   })
 
@@ -13,4 +17,19 @@ describe( "The Customer: ", function() {
   it( "Should have some cash", function() {
     assert.equal( 50, jeff.cash )
   })
+
+  it( "Should not have any records to start with", function() {
+    assert.deepEqual( [], jeff.purchases )
+  })
+
+  it( "Should be able to buy a record they can afford", function() {
+    jeff.buy( bleach )
+    assert.equal( 1, jeff.purchases.length )
+  })
+
+  it( "Should not be able to buy a record they cannot afford", function() {
+    jeff.buy( bleachSpecial )
+    assert.equal( 0, jeff.purchases.length )
+  })
+
 })
