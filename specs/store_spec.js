@@ -1,5 +1,6 @@
 var Record = require( '../record' );
 var Store = require( '../store' );
+var Customer = require( '../customer' );
 var assert = require( 'chai' ).assert;
 
 describe( "The Store: ", function() {
