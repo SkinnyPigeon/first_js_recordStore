@@ -1,5 +1,6 @@
 var Customer = require( '../customer' );
 var Record = require('../record');
+var Store = require('../store');
 
 var assert = require( 'chai' ).assert;
 
@@ -7,6 +8,9 @@ describe( "The Customer: ", function() {
   beforeEach( function() {
     bleach = new Record( "Nirvana", "Bleach", 8 )
     bleachSpecial = new Record( "Nirvana", "Bleach Special Edition", 51 )
+
+    bigDaves = new Store( "Big Daves", "Dundee" )
+
     jeff = new Customer( "Jeff", 50 )
   })
 
@@ -39,8 +43,15 @@ describe( "The Customer: ", function() {
 
   it( "Should be able to sell records in their collection", function() {
     jeff.buy( bleach )
-    jeff.sell( bleach )
+    jeff.sell( bigDaves, bleach )
     assert.equal( 46, jeff.cash )
+  })
+
+  it( "Should reduce Big Dave's balance", function() {
+    bigDaves.addStock( bleach, 5 )
+    bigDaves.sell( jeff, bleach )
+    jeff.sell( bigDaves, bleach )
+    assert.equal( 4, bigDaves.balance )
   })
 
 
