@@ -10,7 +10,16 @@ Customer.prototype = {
       this.purchases.push( album );
       this.cash -= album.price;
     }
+  },
 
+  sell: function( album ) {
+    for( sold_album of this.purchases ) {
+      if( album.title === sold_album.title ) {
+        this.cash += ( sold_album.price / 2 );
+        this.purchases.splice( sold_album.index, 1 );
+        break
+      }
+    }
   },
 
 
