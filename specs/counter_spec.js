@@ -11,8 +11,6 @@ describe( "The Counter: ", function() {
     assert.equal( 1000, counter.total )
   })
 
-  it( "Should split the numbers to an array", function() {
-    assert.deepEqual( [ 1, 0, 0, 0 ], counter.convert() )
-  })
+ 
 
 })
