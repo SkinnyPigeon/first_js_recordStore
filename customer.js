@@ -7,8 +7,10 @@ var Customer = function( name, cash ) {
 Customer.prototype = {
   buy: function( album ) {
     if( this.cash >= album.price ){
-      this.purchases.push( album )
+      this.purchases.push( album );
+      this.cash -= album.price;
     }
+
   },
 
 

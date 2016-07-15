@@ -32,4 +32,21 @@ describe( "The Customer: ", function() {
     assert.equal( 0, jeff.purchases.length )
   })
 
+  it( "Should reduce thier cash when purhcasing", function() {
+    jeff.buy( bleach )
+    assert.equal( 42, jeff.cash )
+  })
+
+  // it( "Should be able to sell records in their collection", function() {
+
+  // })
+
+
 })
+
+
+
+
+
+
+
