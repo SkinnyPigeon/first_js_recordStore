@@ -9,6 +9,8 @@ describe( "The Store: ", function() {
     point = new Record( "Cornelius", "Point", 10 )
     likeClockwork = new Record( "QOTSA", "Like Clockwork", 9 )
 
+    jeff = new Customer( "Jeff", 1000 )
+
     bigDaves = new Store( "Big Dave's", "Dundee")
   })
 
@@ -46,13 +48,13 @@ describe( "The Store: ", function() {
 
   it( "Should sell goods and increase balance", function() {
     bigDaves.addStock( bleach, 1 );
-    bigDaves.sell( bleach );
+    bigDaves.sell( jeff, bleach );
     assert.equal( 8, bigDaves.balance )
   })
 
   it( "Should remove item from stock", function() {
     bigDaves.addStock( bleach, 1 );
-    bigDaves.sell( bleach );
+    bigDaves.sell( jeff, bleach );
     assert.deepEqual( [], bigDaves.stock )
   })
 
@@ -63,17 +65,27 @@ describe( "The Store: ", function() {
 
   it( "Should only delete one when selling", function() {
     bigDaves.addStock( bleach, 5 );
-    bigDaves.sell( bleach );
+    bigDaves.sell( jeff, bleach );
     assert.equal( 4, bigDaves.stock.length )
   })
 
   it( "Should give total of stock value and balance", function() {
     bigDaves.addStock( bleach, 5 );
-    bigDaves.sell( bleach );
+    bigDaves.sell( jeff, bleach );
     assert.equal( 40, bigDaves.totesValue() )
   })
 
+  it( "Jeff should lose money when buying the item", function() {
+    bigDaves.addStock( bleach, 5 )
+    bigDaves.sell( jeff, bleach );
+    assert.equal( 992, jeff.cash )
+  })
 
+  it( "Jeff should gain album when buying the item", function() {
+    bigDaves.addStock( bleach, 5 )
+    bigDaves.sell( jeff, bleach );
+    assert.deepEqual( bleach, jeff.purchases[0] )
+  })
 
 } )
 

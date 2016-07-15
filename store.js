@@ -33,10 +33,11 @@ Store.prototype = {
     return listAll
   },
 
-  sell: function( album ) {
+  sell: function( customer, album ) {
     for( sold_album of this.stock ) {
       if( album.title === sold_album.title ) {
         this.balance += sold_album.price;
+        customer.buy( album );
         this.stock.splice( sold_album.index, 1);
         break
       }
