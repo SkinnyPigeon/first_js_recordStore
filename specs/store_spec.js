@@ -43,6 +43,18 @@ describe( "The Store: ", function() {
     assert.deepEqual( ( bleach, point ), bigDaves.inventory() )
   })
 
+  it( "Should sell goods and increase balance", function() {
+    bigDaves.addStock( bleach );
+    bigDaves.sell( bleach );
+    assert.equal( 8, bigDaves.balance )
+  })
+
+  it( "Should remove item from stock", function() {
+    bigDaves.addStock( bleach );
+    bigDaves.sell( bleach );
+    assert.deepEqual( [], bigDaves.stock )
+  })
+
 
 
 } )

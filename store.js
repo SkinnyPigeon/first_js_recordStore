@@ -29,7 +29,18 @@ Store.prototype = {
       listAll = item;
     })
     return listAll
-  }
+  },
+
+  sell: function( album ) {
+    for( sold_album of this.stock ) {
+      if( album.title == sold_album.title ) {
+        this.balance += sold_album.price;
+        this.stock.splice( sold_album.index, 1);
+      }
+    }
+  },
+
+  
 
 }
 module.exports = Store;
