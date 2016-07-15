@@ -1,6 +1,6 @@
-var Record = require('../record');
-var Store = require('../store');
-var assert = require('chai').assert;
+var Record = require( '../record' );
+var Store = require( '../store' );
+var assert = require( 'chai' ).assert;
 
 describe( "The Store: ", function() {
   beforeEach( function() {
@@ -27,9 +27,34 @@ describe( "The Store: ", function() {
     assert.deepEqual( [], bigDaves.stock )
   })
 
-  it( "SHould be able to add stock", function() {
+  it( "Should be able to add stock", function() {
     bigDaves.addStock( bleach );
     assert.deepEqual( bleach, bigDaves.stock[0] )
   })
 
+  it( "Should search its inventory", function() {
+    bigDaves.addStock( bleach );
+    assert.deepEqual( bleach, bigDaves.search( "Bleach" ) )
+  })
+
+
+
 } )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
