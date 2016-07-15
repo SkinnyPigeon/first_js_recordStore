@@ -8,8 +8,10 @@ var Store = function( name, location ) {
 }
 
 Store.prototype = {
-  addStock: function( record ) {
-    this.stock.push( record );
+  addStock: function( record, quantity ) {
+    for( var i = 0; i < quantity; i++ ) {
+      this.stock.push( record );
+    }
   },
 
   search: function( stock ) { 
@@ -36,14 +38,31 @@ Store.prototype = {
       if( album.title == sold_album.title ) {
         this.balance += sold_album.price;
         this.stock.splice( sold_album.index, 1);
+        break
       }
+      console.log( this.stock )
     }
   },
 
-  
+  totesValue: function() {
+    this.total = 0;
+    this.stock.forEach( function( album ) {
+      this.total += album.price;
+    }.bind( this ) );
+    return this.total += this.balance;
+  },
+
+
 
 }
 module.exports = Store;
+
+
+
+
+
+
+
 
 
 

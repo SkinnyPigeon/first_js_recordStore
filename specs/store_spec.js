@@ -28,31 +28,48 @@ describe( "The Store: ", function() {
   })
 
   it( "Should be able to add stock", function() {
-    bigDaves.addStock( bleach );
+    bigDaves.addStock( bleach, 1 );
     assert.deepEqual( bleach, bigDaves.stock[0] )
   })
 
   it( "Should search its inventory", function() {
-    bigDaves.addStock( bleach );
+    bigDaves.addStock( bleach, 1 );
     assert.deepEqual( bleach, bigDaves.search( "Bleach" ) )
   })
 
   it( "Should list all its inventory", function() {
-    bigDaves.addStock( bleach );
-    bigDaves.addStock( point );
+    bigDaves.addStock( bleach, 1 );
+    bigDaves.addStock( point, 1 );
     assert.deepEqual( ( bleach, point ), bigDaves.inventory() )
   })
 
   it( "Should sell goods and increase balance", function() {
-    bigDaves.addStock( bleach );
+    bigDaves.addStock( bleach, 1 );
     bigDaves.sell( bleach );
     assert.equal( 8, bigDaves.balance )
   })
 
   it( "Should remove item from stock", function() {
-    bigDaves.addStock( bleach );
+    bigDaves.addStock( bleach, 1 );
     bigDaves.sell( bleach );
     assert.deepEqual( [], bigDaves.stock )
+  })
+
+  it( "Should be able to add multiple stock", function() {
+    bigDaves.addStock( bleach, 5 );
+    assert.equal( 5, bigDaves.stock.length )
+  })
+
+  it( "Should only delete one when selling", function() {
+    bigDaves.addStock( bleach, 5 );
+    bigDaves.sell( bleach );
+    assert.equal( 4, bigDaves.stock.length )
+  })
+
+  it( "Should give total of stock value and balance", function() {
+    bigDaves.addStock( bleach, 5 );
+    bigDaves.sell( bleach );
+    assert.equal( 40, bigDaves.totesValue() )
   })
 
 
