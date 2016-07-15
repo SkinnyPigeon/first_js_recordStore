@@ -39,7 +39,8 @@ describe( "The Store: ", function() {
 
   it( "Should list all its inventory", function() {
     bigDaves.addStock( bleach );
-    assert.deepEqual( bleach, bigDaves.inventory() )
+    bigDaves.addStock( point );
+    assert.deepEqual( ( bleach, point ), bigDaves.inventory() )
   })
 
 
