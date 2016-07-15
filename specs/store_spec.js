@@ -88,10 +88,16 @@ describe( "The Store: ", function() {
   })
 
   it( "Should cost to buy stock", function() {
-    bigDaves.balance = 1000;
     bigDaves.addStock( bleach, 5 );
-    assert.equal( 980, bigDaves.balance )
+    assert.equal( 80, bigDaves.balance )
+  })
 
+  it( "Should be able to to sell second hand stock", function() {
+    bigDaves.addStock( bleach, 5 );
+    bigDaves.sell( jeff, bleach );
+    jeff.sell( bigDaves, bleach );
+    bigDaves.sellSecondHand( jeff, bleach )
+    assert.deepEqual( bleach, jeff.purchases[0] )
   })
 
 } )

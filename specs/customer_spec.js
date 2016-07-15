@@ -52,7 +52,16 @@ describe( "The Customer: ", function() {
     bigDaves.addStock( bleach, 5 )
     bigDaves.sell( jeff, bleach )
     jeff.sell( bigDaves, bleach )
-    assert.equal( 84, bigDaves.balance )
+    assert.equal( 80, bigDaves.balance )
+  })
+
+  it( "Should make a profit from selling second hand goods", function() {
+    bigDaves.balance = 100
+    bigDaves.addStock( bleach, 5 )
+    bigDaves.sell( jeff, bleach )
+    jeff.sell( bigDaves, bleach )
+    bigDaves.sellSecondHand( jeff, bleach )
+    assert.equal( 86, bigDaves.balance )
   })
 
 

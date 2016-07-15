@@ -5,6 +5,7 @@ var Store = function( name, location, balance ) {
   this.location = location;
   this.balance = balance;
   this.stock = [];
+  this.secondHand = [];
 }
 
 Store.prototype = {
@@ -13,6 +14,11 @@ Store.prototype = {
       this.stock.push( record );
       this.balance -= ( record.price / 2 );
     }
+  },
+
+  buy: function( record ) {
+      this.secondHand.push( record );
+      this.balance -= ( record.price / 2 );
   },
 
   search: function( stock ) { 
@@ -40,6 +46,17 @@ Store.prototype = {
         this.balance += sold_album.price;
         customer.buy( album );
         this.stock.splice( sold_album.index, 1);
+        break
+      }
+    }
+  },
+
+  sellSecondHand: function( customer, album ) {
+    for( sold_album of this.secondHand ) {
+      if( album.title === sold_album.title ) {
+        this.balance += ( sold_album.price * 0.75 );
+        customer.buySecondHand( album );
+        this.secondHand.splice( sold_album.index, 1);
         break
       }
     }
