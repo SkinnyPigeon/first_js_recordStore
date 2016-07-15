@@ -23,5 +23,23 @@ Store.prototype = {
     return foundRecord;
   },
 
+  inventory: function() {
+    var listAll = 0
+    _.forEach( this.stock, function( item ) {
+      listAll = item;
+    })
+    return listAll
+  }
+
 }
 module.exports = Store;
+
+
+
+
+
+
+
+
+
+
