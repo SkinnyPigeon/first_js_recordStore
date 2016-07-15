@@ -9,7 +9,7 @@ describe( "The Customer: ", function() {
     bleach = new Record( "Nirvana", "Bleach", 8 )
     bleachSpecial = new Record( "Nirvana", "Bleach Special Edition", 51 )
 
-    bigDaves = new Store( "Big Daves", "Dundee" )
+    bigDaves = new Store( "Big Daves", "Dundee", 0 )
 
     jeff = new Customer( "Jeff", 50 )
   })
@@ -48,10 +48,11 @@ describe( "The Customer: ", function() {
   })
 
   it( "Should reduce Big Dave's balance", function() {
+    bigDaves.balance = 100
     bigDaves.addStock( bleach, 5 )
     bigDaves.sell( jeff, bleach )
     jeff.sell( bigDaves, bleach )
-    assert.equal( 4, bigDaves.balance )
+    assert.equal( 84, bigDaves.balance )
   })
 
 

@@ -1,9 +1,9 @@
 var _ = require( 'lodash' )
 
-var Store = function( name, location ) {
+var Store = function( name, location, balance ) {
   this.name = name;
   this.location = location;
-  this.balance = 0;
+  this.balance = balance;
   this.stock = [];
 }
 
@@ -11,6 +11,7 @@ Store.prototype = {
   addStock: function( record, quantity ) {
     for( var i = 0; i < quantity; i++ ) {
       this.stock.push( record );
+      this.balance -= ( record.price / 2 );
     }
   },
 

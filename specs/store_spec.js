@@ -11,7 +11,7 @@ describe( "The Store: ", function() {
 
     jeff = new Customer( "Jeff", 1000 )
 
-    bigDaves = new Store( "Big Dave's", "Dundee")
+    bigDaves = new Store( "Big Dave's", "Dundee", 100)
   })
 
   it( "Should have a name", function() {
@@ -22,8 +22,8 @@ describe( "The Store: ", function() {
     assert.equal( "Dundee", bigDaves.location )
   })
 
-  it( "Should have an empty opening balance", function() {
-    assert.equal( 0, bigDaves.balance )
+  it( "Should have an opening balance", function() {
+    assert.equal( 100, bigDaves.balance )
   })
 
   it( "Should have no stock to start with", function() {
@@ -49,7 +49,7 @@ describe( "The Store: ", function() {
   it( "Should sell goods and increase balance", function() {
     bigDaves.addStock( bleach, 1 );
     bigDaves.sell( jeff, bleach );
-    assert.equal( 8, bigDaves.balance )
+    assert.equal( 104, bigDaves.balance )
   })
 
   it( "Should remove item from stock", function() {
@@ -72,7 +72,7 @@ describe( "The Store: ", function() {
   it( "Should give total of stock value and balance", function() {
     bigDaves.addStock( bleach, 5 );
     bigDaves.sell( jeff, bleach );
-    assert.equal( 40, bigDaves.totesValue() )
+    assert.equal( 120, bigDaves.totesValue() )
   })
 
   it( "Jeff should lose money when buying the item", function() {
@@ -85,6 +85,13 @@ describe( "The Store: ", function() {
     bigDaves.addStock( bleach, 5 )
     bigDaves.sell( jeff, bleach );
     assert.deepEqual( bleach, jeff.purchases[0] )
+  })
+
+  it( "Should cost to buy stock", function() {
+    bigDaves.balance = 1000;
+    bigDaves.addStock( bleach, 5 );
+    assert.equal( 980, bigDaves.balance )
+
   })
 
 } )
