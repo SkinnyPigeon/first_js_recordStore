@@ -7,5 +7,4 @@ describe( "The Counter: ", function() {
     counter = new Counter();
   })
  
-
 })

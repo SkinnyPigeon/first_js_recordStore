@@ -13,10 +13,8 @@ var Counter = function() {
     console.log( "5p: " + Math.floor( multiply % 1000 % 500 % 200 % 100 % 50 % 20 % 10 / 5 ) )
     console.log( "2p: " + Math.floor( multiply % 1000 % 500 % 200 % 100 % 50 % 20 % 10 % 5 / 2) )
     console.log( "1p: " + Math.floor( multiply % 1000 % 500 % 200 % 100 % 50 % 20 % 10 % 5 % 2 / 1 ) )
-
-    return this.change
-
   }
+  
 }
 
 module.exports = Counter;

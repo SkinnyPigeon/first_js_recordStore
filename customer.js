@@ -29,11 +29,8 @@ Customer.prototype = {
         break
       }
     }
-  },
-
-
+  }
 
 }
-
 
 module.exports = Customer;

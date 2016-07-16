@@ -74,10 +74,7 @@ Store.prototype = {
     var sum = _.round( ( customerMoney - saleTotal ), 4 );
     var changeToGive = counter.change( sum )
     return changeToGive;
-  },
-
-
-
+  }
 }
 module.exports = Store;
 

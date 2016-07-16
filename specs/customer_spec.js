@@ -64,7 +64,6 @@ describe( "The Customer: ", function() {
     assert.equal( 86, bigDaves.balance )
   })
 
-
 })
 
 
