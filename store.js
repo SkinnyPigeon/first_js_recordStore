@@ -71,7 +71,7 @@ Store.prototype = {
   },
 
   giveChange: function( customerMoney, saleTotal, counter ) {
-    var sum = ( customerMoney - saleTotal );
+    var sum = _.round( ( customerMoney - saleTotal ), 2 );
     var changeToGive = counter.change( sum )
     return changeToGive;
   },
