@@ -103,7 +103,7 @@ describe( "The Store: ", function() {
     assert.deepEqual( bleach, jeff.purchases[0] )
   })
 
-  it( "Should do the maths", function() {
+  it( "Should do return the change", function() {
     bigDaves.giveChange( 20, 6.97, counter )  
   })
 
