@@ -1,6 +1,7 @@
 var Record = require( '../record' );
 var Store = require( '../store' );
 var Customer = require( '../customer' );
+var Counter = require( '../counter' );
 var assert = require( 'chai' ).assert;
 
 describe( "The Store: ", function() {
@@ -12,6 +13,8 @@ describe( "The Store: ", function() {
     jeff = new Customer( "Jeff", 1000 )
 
     bigDaves = new Store( "Big Dave's", "Dundee", 100)
+
+    counter = new Counter();
   })
 
   it( "Should have a name", function() {
@@ -98,6 +101,10 @@ describe( "The Store: ", function() {
     jeff.sell( bigDaves, bleach );
     bigDaves.sellSecondHand( jeff, bleach )
     assert.deepEqual( bleach, jeff.purchases[0] )
+  })
+
+  it( "Should do the maths", function() {
+    bigDaves.giveChange( 20, 6.97, counter )  
   })
 
 } )

@@ -1,6 +1,5 @@
-var Counter = function( total ) {
-  this.total = total;
-  this.change  = function() {
+var Counter = function() {
+  this.change  = function( total ) {
     var multiply = 100 * total;
 
     console.log( "Total: £" + total )
@@ -14,9 +13,10 @@ var Counter = function( total ) {
     console.log( "5p: " + Math.floor( multiply % 1000 % 500 % 200 % 100 % 50 % 20 % 10 / 5 ) )
     console.log( "2p: " + Math.floor( multiply % 1000 % 500 % 200 % 100 % 50 % 20 % 10 % 5 / 2) )
     console.log( "1p: " + Math.floor( multiply % 1000 % 500 % 200 % 100 % 50 % 20 % 10 % 5 % 2 / 1 ) )
+
+    return this.change
+
   }
 }
 
-counter = new Counter( 72.58 );
-counter.change()
 module.exports = Counter;

@@ -70,6 +70,12 @@ Store.prototype = {
     return this.total += this.balance;
   },
 
+  giveChange: function( customerMoney, saleTotal, counter ) {
+    var sum = ( customerMoney - saleTotal );
+    var changeToGive = counter.change( sum )
+    return changeToGive;
+  },
+
 
 
 }
